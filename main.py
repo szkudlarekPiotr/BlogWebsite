@@ -20,7 +20,7 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = os.urandom(32)
 ckeditor = CKEditor(app)
 Bootstrap5(app)
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ["POSTGRES_DB_URI"]
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("RAILWAY_URL", "POSTGRES_DB_URI")
 db.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
